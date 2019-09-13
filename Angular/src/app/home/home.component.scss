@@ -1,0 +1,25 @@
+.home-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.home-container > * {
+  width: 50%;
+}
+
+.cheque-card {
+  max-width: 400px;
+}
+
+.cheque-row {
+  display:flex;
+}
+
+.cheque-left-cell {
+  width:50%;
+}
+
+.cheque-right-cell {
+  width:50%;
+  text-align: right;
+}

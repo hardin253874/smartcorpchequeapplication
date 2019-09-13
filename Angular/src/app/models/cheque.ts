@@ -1,6 +1,15 @@
 export class cheque {
-  date: Date;
+  chequeDate: Date;
   payee: string;
   amount: number;
-  amounttext: string;
+  amountWord: string;
+  constructor(
+    fields?: {
+      chequeDate?: Date;
+      payee?: string;
+      amount?: number;
+      amountWord?: string;
+    }) {
+    if (fields) Object.assign(this, fields);
+  }
 }

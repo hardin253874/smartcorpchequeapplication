@@ -1,1 +1,78 @@
-<p>home works!</p>
+
+<div class="home-container">
+  <section fxLayout="row wrap" fxLayoutAlign="center center">
+    <mat-card fxFlex="500px" fxFlex.xs="100%">
+      <mat-card-title>Create cheque</mat-card-title>
+      <form [formGroup]="chequeForm" autocomplete="off" novalidate (ngSubmit)="createCheque(chequeForm.value)" fxLayout="column wrap"
+            fxLayoutAlign="center center" fxLayoutGap="10px">
+        <mat-card-content>
+          <mat-form-field>
+            <input matInput placeholder="Payee" formControlName="payee" id="payee">
+            <mat-hint align="end">Not less then 2 characters long.</mat-hint>
+            <mat-error *ngIf="hasError('payee', 'required')">Payee is required</mat-error>
+          </mat-form-field>
+          <br/>
+          <mat-form-field>
+            <input matInput placeholder="Amount" formControlName="amount" id="amount">
+            <mat-error *ngIf="hasError('amount', 'required')">Amount is required</mat-error>
+          </mat-form-field>
+          <br/>
+          <mat-form-field>
+            <input matInput [matDatepicker]="picker" placeholder="Choose a cheque date" formControlName="chequeDate" id="chequeDate" readonly (click)="picker.open()">
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+            <mat-error *ngIf="hasError('chequeDate', 'required')">Cheque Date is required</mat-error>
+          </mat-form-field>
+          <div>
+            <mat-error >{{errorMessage}}</mat-error>
+          </div>
+        </mat-card-content>
+        <mat-card-actions>
+          <button mat-raised-button color="primary" [disabled]="!chequeForm.valid">Create</button>
+        </mat-card-actions>
+      </form>
+
+    </mat-card>
+    <mat-card class="cheque-card" *ngIf="isCreated && cheque">
+      <mat-card-content>
+        <div class="cheque-row">
+          <div class="cheque-left-cell">
+            <span class="card-title">Smart Corp</span><br>
+            <span class="card-title">4/4 Gladstone Rd, Castle Hill NSW 2154</span>
+          </div>
+          <div class="cheque-right-cell">
+            <span class="card-title">Date: {{cheque.ChequeDate | date:'shortDate' }}</span>
+          </div>
+        </div>
+      </mat-card-content>
+      <mat-card-content>
+        <div class="cheque-row">
+          <div class="cheque-left-cell">
+            Pay {{cheque.Payee}}
+          </div>
+          <div class="cheque-right-cell">
+            {{cheque.Amount | currency }}
+          </div>
+        </div>
+        <p>
+          The sum of {{cheque.AmountWord}}
+        </p>
+      </mat-card-content>
+      <mat-card-actions>
+        <div class="cheque-row">
+          <div class="cheque-left-cell">
+            Bank
+          </div>
+          <div class="cheque-right-cell">
+
+          </div>
+        </div>
+      </mat-card-actions>
+    </mat-card>
+
+
+
+  </section>
+
+</div>
+
