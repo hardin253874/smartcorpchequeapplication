@@ -51,12 +51,12 @@ namespace ChequeApplication.Services
             var words = "";
 
             if (number / 1000000000 > 0) {
-                words += NumberToWords(number / 1000000000) + " billion ";
+                words += NumberToWords(number / 1000000000) + " billion, ";
                 number %= 1000000000;
             }
 
             if (number / 1000000 > 0) {
-                words += NumberToWords(number / 1000000) + " million ";
+                words += NumberToWords(number / 1000000) + " million, ";
                 number %= 1000000;
             }
 
