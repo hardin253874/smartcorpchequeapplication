@@ -20,7 +20,7 @@ namespace ChequeApplication.UnitTests
             yield return new TestCaseData(20.00, "twenty dollars");
             yield return new TestCaseData(3.20, "three dollars and twenty cents");
             yield return new TestCaseData(217.20, "two hundred seventeen dollars and twenty cents");
-            yield return new TestCaseData(3005000150.65, "three billion five million one hundred fifty dollars and sixty-five cents");
+            yield return new TestCaseData(3005000150.65, "three billion, five million, one hundred fifty dollars and sixty-five cents");
             yield return new TestCaseData(0, "zero dollars");
         }
 
