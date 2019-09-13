@@ -32,9 +32,18 @@ namespace ChequeApplication.Controllers
         // Post: api/Cheque/create
         public HttpResponseMessage Post([FromBody]ChequeRequest request)
         {
-            var cheque = new Cheque() { ChequeDate = DateTime.Today, Amount = 100.00, Payee = "John Don", AmountText = "One houndred" };
+            var chequeService = new ChequeService();
+            var message = string.Empty;
+            var isValid = chequeService.IsValidCheque(request, out message);
+            
+            if (isValid){                
+                var amountWord = chequeService.GetAmountWord(request.Amount);
+                return ToJson(new Cheque() { ChequeDate = request.ChequeDate, Amount = request.Amount, Payee = request.Payee, AmountWord = amountWord });
+            }
+            else {
+                return Request.CreateResponse(HttpStatusCode.BadRequest, message);
+            }
 
-            return ToJson(cheque);
         }
 
         

@@ -13,6 +13,6 @@ namespace ChequeApplication.Models
 
         public Double Amount { get; set; }
 
-        public string AmountText { get; set; }
+        public string AmountWord { get; set; }
     }
 }
