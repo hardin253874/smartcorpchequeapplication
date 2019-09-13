@@ -27,7 +27,7 @@ export class HomeComponent implements OnInit {
   constructor(
     private homeService: HomeService
   ) { }
-  cheque: cheque;
+  cheque: any;
   chequeDate: Date;
   payee: string = 'test';
   amount: number;
